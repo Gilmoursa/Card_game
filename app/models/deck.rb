@@ -1,4 +1,3 @@
-#require 'pry'
 class Deck
 	attr_reader :deck, :hand_a, :hand_b
 

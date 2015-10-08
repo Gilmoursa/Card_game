@@ -53,8 +53,3 @@ class Gamelogic_cli
 		end
 	end
 end
-
-#require 'pry'
-
-
-Gamelogic_cli.new
