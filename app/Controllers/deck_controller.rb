@@ -1,8 +1,8 @@
 class DeckController
 
-  attr_reader :deck, :hand_a, :hand_b
+  attr_reader :deck, :hand1, :hand2
 
-  def new
+  def create_deck
     @deck = Deck.new
   end
 
@@ -14,11 +14,11 @@ class DeckController
 
   def deal
     two_hands = @deck.each_slice(26).to_a
-    #@hand_a = Hand.new
-    #@hand_b = Hand.new
+    @hand1 = Hand.new
+    @hand2 = Hand.new
 
-    @hand_a = two_hands[0]
-    @hand_b = two_hands[1]
+    @hand1.hand = two_hands[0]
+    @hand2.hand = two_hands[1]
   end
 
 end
