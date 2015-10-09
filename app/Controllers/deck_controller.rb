@@ -1,19 +1,21 @@
 class DeckController
 
-  attr_reader :deck, :hand1, :hand2
+  attr_reader :hand1, :hand2
 
   def create_deck
-    @deck = Deck.new
+    @deck_object = Deck.new
+    @deck_object.deck 
   end
 
 
-  def shuffle
-
-  end
+  # def shuffle
+  #   @deck.shuffle
+  # end
 
 
   def deal
-    two_hands = @deck.each_slice(26).to_a
+    two_hands = @deck_object.deck.each_slice(26).to_a
+    # two_hands = Card.all.each_slice(26)
     @hand1 = Hand.new
     @hand2 = Hand.new
 

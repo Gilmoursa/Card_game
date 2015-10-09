@@ -4,7 +4,6 @@ class HandController
     hand << card1 << card2
   end
 
-
   def minus_card(hand)
     hand.shift
   end

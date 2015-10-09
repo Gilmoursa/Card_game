@@ -2,4 +2,4 @@
 
 require_relative '../config/environment.rb'
 
-Gamelogic_cli.new
+GameController.new
