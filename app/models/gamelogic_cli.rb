@@ -45,8 +45,10 @@ class Gamelogic_cli
 
 	def play
 		#binding.pry
-		puts "Player 1 played #{@player1.play_hand}"
-		puts "Player 2 played #{@player2.play_hand}"
+		puts "Player 1 played"
+		puts "#{@player1.play_hand}"
+		puts "Player 2 played"
+		puts "#{@player2.play_hand}"
 		puts "#{self.is_greater?} wins"
 	end
 
