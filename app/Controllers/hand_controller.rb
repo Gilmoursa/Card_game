@@ -8,4 +8,5 @@ class HandController
     hand.shift
   end
 
+
 end

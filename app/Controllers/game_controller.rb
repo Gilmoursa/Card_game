@@ -1,8 +1,12 @@
+require'pry'
 class GameController
 
   def initialize
     puts "Welcome to War! If this works it'll be a miracle!"
-    Game.new
+    game = Game.new
+    @player1=game.player1.hand.hand
+    @player2=game.player1.hand.hand
+    # binding.pry
     cli
   end
 
@@ -27,11 +31,21 @@ class GameController
     @user_input=gets.downcase.chomp
   end
 
-    def play
+  def play
     #binding.pry
-    puts "Player 1 played" #{@player1.play_hand}"
-    puts "Player 2 played" #{@player2.play_hand}"
+    hand_controller1= HandController.new
+    hand_controller2= HandController.new
+
+    @player1_hand=hand_controller1.minus_card(@player1)
+    @player2_hand=hand_controller2.minus_card(@player2)
+
+    puts "Player 1 played #{@player1_hand.number} #{@player1_hand.suit}"
+    puts "Player 2 played #{@player2_hand.number} #{@player2_hand.suit}"
+
     puts "#{self.player_with_higher_card} wins"
+    
+    self.player_with_higher_card.hand_controller1.add_cards( @player1_hand, @player2_hand)
+
   end
 
   def exit
@@ -39,12 +53,19 @@ class GameController
   end
 
   def player_with_higher_card
-    if @player1.card_escrow[0...-1].to_i > @player2.card_escrow[0...-1].to_i
-      "player 1"
-    # elsif player1.card_escrow < player2.card_escrow
-    #   player2
-    else
-      "player 2" 
+    if @player1_hand.number > @player2_hand.number
+
+      hand_controller1.add_cards( @player1_hand, @player2_hand)
+      player1
+      "player1"
+
+    elsif @player1_hand.number < @player2_hand.number
+      hand_controller1.add_cards( @player1_hand, @player2_hand)
+      player2 
+      "player2"
+    else 
+      "Play again ..."
+      
     end
   end
 
